@@ -30,7 +30,12 @@ function MovieDetails() {
     }, [imdbId]);
 
     if (error) return <h2 style={{ color: "red" }}>{error}</h2>;
-    if (!movie) return <h2 style={{ color: "white" }}>Loading...</h2>;
+    if (!movie)
+        return (
+            <div className="loading-spinner-container">
+                <div className="spinner"></div>
+            </div>
+        );
 
     return (
         <div className="movie-details">

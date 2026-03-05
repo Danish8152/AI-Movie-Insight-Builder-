@@ -1,16 +1,68 @@
-# React + Vite
+#Movie Details App
+A React-based web application to display detailed information about movies, including cast, plot, ratings, and audience sentiment.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#Setup Instructions
+Clone the repository
+git clone https://github.com/Danish8152/AI-Movie-Insight-Builder
+cd AI-Movie-Insight-Builder
 
-Currently, two official plugins are available:
+#Install dependencies
+npm install
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#Set up environment variables
+Create a .env file in the root and add your API URL:
+VITE_API_URL= https://ai-movie-insight-builder-backend-1.onrender.com
 
-## React Compiler
+#Run the development server
+npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+#The app should now be running at https://movie-insights.netlify.app/
 
-## Expanding the ESLint configuration
+#Build for production
+npm run build
+This generates optimized production files in the dist/ folder.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#Tech Stack Rationale
+React.js – For building a modular, component-based UI and managing state efficiently.
+JavaScript – Core programming language for front-end logic and interactivity.
+Node.js – Handles backend APIs, environment management, and development tooling.
+React Router – Enables dynamic routing for movie detail pages (/movie/:imdbId).
+CSS Modules / Custom CSS – Provides scoped styling and custom animations, like the loading spinner.
+Fetch API – Simple, native solution for making HTTP requests to the backend API.
+Vite – Fast build tool and development server optimized for modern React apps.
+
+#Why these choices:
+We prioritized speed, simplicity, and maintainability. JavaScript and Node.js provide a full-stack foundation, while React and Vite allow rapid front-end development with a smooth developer experience. Vanilla CSS keeps the project lightweight and customizable.
+
+#Backend / API Details
+The frontend expects the backend API to return movie details in JSON format. Here’s the expected structure for a single movie:
+{
+  "title": "Inception",
+  "year": "2010",
+  "rating": "8.8",
+  "poster": "https://image-url.com/inception.jpg",
+  "plot": "A skilled thief is offered a chance to erase his criminal past...",
+  "sentiment": {
+    "summary": "Mostly positive reactions from audiences.",
+    "overall": "Positive"
+  },
+  "cast": [
+    {
+      "name": "Leonardo DiCaprio",
+      "character": "Cobb",
+      "profile": "https://image-url.com/leonardo.jpg"
+    },
+    {
+      "name": "Joseph Gordon-Levitt",
+      "character": "Arthur",
+      "profile": "https://image-url.com/joseph.jpg"
+    }
+  ]
+}
+
+
+#Assumptions
+The API endpoint returns complete movie details including cast, poster URL, plot, rating, and sentiment.
+All images (poster and cast profiles) are publicly accessible URLs.
+The app is single-page and only handles one-to-one movie detail display; no search or multi-page listings yet.
+Audience sentiment data may be missing for some movies; the UI handles this gracefully.

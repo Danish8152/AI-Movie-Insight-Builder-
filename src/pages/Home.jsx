@@ -135,7 +135,7 @@ function Home() {
                     </button>
                 </div>
             </div>
-
+{/* Bottom section card */}
             <div className="bottom-section">
                 <h2 className="explore-heading">Explore More</h2>
 
